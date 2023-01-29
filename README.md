@@ -7,3 +7,7 @@ Symfony new --php=8.2 {Nom du projet}
 Symfony composer req orm
 Symfony composer req --dev maker orm-fixtures debug
 Symfony composer req security
+
+# Suite
+
+symfony console make:auth
