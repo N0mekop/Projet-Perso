@@ -2,6 +2,7 @@
 
 Symfony new --php=8.2 {Nom du projet}
 
-# Installation Doctrine
+# Installation
 
 Symfony composer req orm
+Symfony composer req --dev maker orm-fixtures debug
