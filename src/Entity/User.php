@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -26,6 +28,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserTeam::class, orphanRemoval: true)]
+    private Collection $userTeams;
+
+    public function __construct()
+    {
+        $this->userTeams = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -95,5 +105,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, UserTeam>
+     */
+    public function getUserTeams(): Collection
+    {
+        return $this->userTeams;
+    }
+
+    public function addUserTeam(UserTeam $userTeam): self
+    {
+        if (!$this->userTeams->contains($userTeam)) {
+            $this->userTeams->add($userTeam);
+            $userTeam->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserTeam(UserTeam $userTeam): self
+    {
+        if ($this->userTeams->removeElement($userTeam)) {
+            // set the owning side to null (unless already changed)
+            if ($userTeam->getUser() === $this) {
+                $userTeam->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

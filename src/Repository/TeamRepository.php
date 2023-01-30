@@ -44,10 +44,10 @@ class TeamRepository extends ServiceEntityRepository
 //     */
 //    public function findByExampleField($value): array
 //    {
-//        return $this->createQueryBuilder('g')
-//            ->andWhere('g.exampleField = :val')
+//        return $this->createQueryBuilder('t')
+//            ->andWhere('t.exampleField = :val')
 //            ->setParameter('val', $value)
-//            ->orderBy('g.id', 'ASC')
+//            ->orderBy('t.id', 'ASC')
 //            ->setMaxResults(10)
 //            ->getQuery()
 //            ->getResult()
@@ -56,8 +56,8 @@ class TeamRepository extends ServiceEntityRepository
 
 //    public function findOneBySomeField($value): ?Team
 //    {
-//        return $this->createQueryBuilder('g')
-//            ->andWhere('g.exampleField = :val')
+//        return $this->createQueryBuilder('t')
+//            ->andWhere('t.exampleField = :val')
 //            ->setParameter('val', $value)
 //            ->getQuery()
 //            ->getOneOrNullResult()
