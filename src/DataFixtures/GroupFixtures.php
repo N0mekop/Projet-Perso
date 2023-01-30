@@ -14,6 +14,14 @@ class GroupFixtures extends Fixture
         $group->setName('Triade');
         $manager->persist($group);
 
+        $group = new Group();
+        $group->setName('Les Verts');
+        $manager->persist($group);
+
+        $group = new Group();
+        $group->setName('Los Lobos');
+        $manager->persist($group);
+
         $manager->flush();
     }
 }
