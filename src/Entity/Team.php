@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\GroupRepository;
+use App\Repository\TeamRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity(repositoryClass: GroupRepository::class)]
+#[ORM\Entity(repositoryClass: TeamRepository::class)]
 #[UniqueEntity(fields: ['name'])]
-#[ORM\Table(name: '`group`')]
-class Group
+#[ORM\Table(name: '`team`')]
+class Team
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
