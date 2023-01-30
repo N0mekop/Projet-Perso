@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\UserTeam;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -37,6 +38,18 @@ class UserTeamRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function findUserTeam(User $user)
+    {
+        return $this->createQueryBuilder('ut')
+            ->andWhere('ut.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('ut.name', 'ASC')
+            ->innerJoin('ut.team', 't')
+            ->addSelect('t')
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**
