@@ -12,3 +12,4 @@ symfony composer req security
 
 symfony console make:auth
 symfony console security:hash-password
+symfony composer req symfony/validator
