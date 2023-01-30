@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserTeamRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserTeamRepository::class)]
 class UserTeam
@@ -14,11 +15,13 @@ class UserTeam
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'userTeams')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[Assert\NotBlank()]
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'userTeams')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[Assert\NotBlank()]
     private ?Team $team = null;
 
     public function getId(): ?int

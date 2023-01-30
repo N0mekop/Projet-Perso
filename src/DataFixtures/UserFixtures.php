@@ -12,6 +12,8 @@ class UserFixtures extends Fixture
     {
         $user = new User();
         $user->setEmail('admin@admin.com');
+        $user->setName('Kazé');
+        $user->setPhone(9441);
         $user->setPassword('$2y$13$iKV.vLCm4eWhOs4w8ohnHucjsVrgNMORQOCXCF/t6rBhbjT5J41YK');
         $manager->persist($user);
 
