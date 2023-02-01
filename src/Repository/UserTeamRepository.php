@@ -45,7 +45,7 @@ class UserTeamRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('ut')
             ->andWhere('ut.user = :user')
             ->setParameter('user', $user)
-            ->orderBy('ut.name', 'ASC')
+            ->orderBy('ut.team', 'ASC')
             ->innerJoin('ut.team', 't')
             ->addSelect('t')
             ->getQuery()
